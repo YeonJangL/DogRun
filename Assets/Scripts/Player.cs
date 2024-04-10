@@ -103,10 +103,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Bone")
+        if (collision.tag == "Apple")
         {
             Gold += 1;
             goldText.text = Gold.ToString();
         }
+
+        Destroy(collision.gameObject);
     }
 }
