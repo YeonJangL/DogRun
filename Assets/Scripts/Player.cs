@@ -34,31 +34,44 @@ public class Player : MonoBehaviour
         float moveX = moveSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
         float moveY = moveSpeed * Time.deltaTime * Input.GetAxis("Vertical");
 
-        if (Input.GetAxis("Horizontal") <= -0.2f)
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Abs(Input.GetAxis("Vertical")))
         {
-            ani.SetBool("left", true);
-        }
-        else
-        {
-            ani .SetBool("left", false);
+            // 좌우 이동일 때만 애니메이션 설정
+            if (Input.GetAxis("Horizontal") <= -0.2f)
+            {
+                ani.SetBool("left", true);
+            }
+            else
+            {
+                ani.SetBool("left", false);
+            }
+
+            if (Input.GetAxis("Horizontal") >= 0.2)
+            {
+                ani.SetBool("right", true);
+            }
+            else
+            {
+                ani.SetBool("right", false);
+            }
         }
 
-        if (Input.GetAxis("Horizontal") >= 0.2)
-        {
-            ani.SetBool("right", true);
-        }
         else
         {
+            // 상하 이동일 때 애니메이션을 비활성화
+            ani.SetBool("left", false);
             ani.SetBool("right", false);
         }
 
-        if (Input.GetAxis("Vertical") >= 0.2f)
+        if (Mathf.Abs(Input.GetAxis("Vertical")) > Mathf.Abs(Input.GetAxis("Horizontal")))
         {
-            ani.SetBool("up", true);
+            // 상하 이동일 때만 이동 처리
+            transform.Translate(0, moveY, 0);
         }
         else
         {
-            ani.SetBool("up", false);
+            // 좌우 이동일 때만 이동 처리
+            transform.Translate(moveX, 0, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.F))

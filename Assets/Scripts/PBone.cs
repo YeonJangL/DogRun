@@ -29,21 +29,8 @@ public class PBone : MonoBehaviour
             // 이펙트 생성
             GameObject go = Instantiate(effect, collision.transform.position, Quaternion.identity);
             
-            // 1초 후 지우기
-            Destroy(go, 1);
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Enemy")
-        {
-            collision.gameObject.GetComponent<Enemy>().Damage(Attack);
-
-            // 이펙트 생성
-            GameObject go = Instantiate(effect, collision.transform.position, Quaternion.identity);
-
-            Destroy(go, 1);
+            // 3초 후 지우기
+            Destroy(go, 3);
         }
     }
 }
