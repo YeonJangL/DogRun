@@ -5,15 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Area
+  - Enemy
+  - PBall
+  - Item
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Item
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 

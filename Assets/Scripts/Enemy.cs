@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     void CreateBullet()
     {
-        Instantiate(bullet, ms.position, Quaternion.identity);
+        Instantiate(bullet, ms.position, Quaternion.identity).GetComponent<Rigidbody2D>().velocity = -Vector2.up * Speed;
 
         // 재귀 호출
         Invoke("CreateBullet", Delay);
@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
 
     public void ItemDrop()
     {
-        Instantiate(Apple, transform.position, Quaternion.identity);
+        // 아이템을 아래에서 위로 드랍하도록 속도를 음수로 설정합니다.
+        Instantiate(Apple, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>().velocity = -Vector2.up * Speed;
     }
 }
